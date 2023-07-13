@@ -62,8 +62,12 @@ def check_correctness(problem: Dict, completion: str, timeout: float,
                text=f"'class':'{type(error).__name__}','message':'{error}'"
                text="{",text,"}"
                result.append(text)
+            except TimeoutException as error:
+                result.append("timed out")
             except BaseException as e:
-                result.append(f"base Exception : {e}")
+                text=f"'class':'{type(error).__name__}','message':'{error}'"
+                text="{",text,"}"
+                result.append(text)
 
             # Needed for cleaning up.
             shutil.rmtree = rmtree
