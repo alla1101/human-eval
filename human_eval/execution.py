@@ -59,14 +59,12 @@ def check_correctness(problem: Dict, completion: str, timeout: float,
                 result.append("passed")
             except Exception as error:
                 # handle the exception
-               text=f"'class':'{type(error).__name__}','message':'{error}'"
-               text="{",text,"}"
+               text=f"{{'class':'{type(error).__name__}','message':'{error}'}}"
                result.append(text)
             except TimeoutException as error:
                 result.append("timed out")
             except BaseException as e:
-                text=f"'class':'{type(error).__name__}','message':'{error}'"
-                text="{",text,"}"
+                text=f"{{'class':'{type(error).__name__}','message':'{error}'}}"
                 result.append(text)
 
             # Needed for cleaning up.
